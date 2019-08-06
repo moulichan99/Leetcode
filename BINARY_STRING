@@ -1,0 +1,40 @@
+string decToBinary(int n) 
+    {    
+        // array to store binary number 
+       int binaryNum[1001]; 
+       string temp;
+        // counter for binary array 
+        int i = 0; 
+        while (n > 0) { 
+            // storing remainder in binary array 
+            binaryNum[i] = n % 2; 
+            n = n / 2; 
+            i++; 
+            } 
+  
+    // printing binary array in reverse order 
+    for (int j = i - 1; j >= 0; j--) 
+         temp+=to_string(binaryNum[j]);
+       
+     return temp;   
+    }
+    bool queryString(string S, int N) {
+        int i=0,count=0;
+        string str;
+        for(i=1;i<=N;i++)
+        {
+            if(i==1)
+                str = '01';
+            else
+                str = decToBinary(i);
+            
+            size_t found  = S.find(str);
+            if(found!=string::npos)
+                 count++;
+        }
+       // cout<<count;
+        if(count==N&&str.length()<=1000)
+            return true;
+        else 
+            return false;
+    }
